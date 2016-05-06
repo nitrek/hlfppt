@@ -20,9 +20,15 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
+import java.util.HashMap;
+
 public class homeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private SliderLayout sliderShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +59,32 @@ public class homeScreen extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        LayoutInflater inflater = getLayoutInflater();
+        LinearLayout container = (LinearLayout) findViewById(R.id.content_frame);
+        createHome(inflater,container);
     }
-
+    public void createHome(LayoutInflater inflater, LinearLayout container)
+    {
+        inflater.inflate(R.layout.home, container);
+        HashMap<String,String> url_maps = new HashMap<String, String>();
+        url_maps.put("Prosperous Communities", "http://www.hlfppt.org/images/banner1.jpg");
+        url_maps.put("Reproductive & Child Healthcare", "http://www.hlfppt.org/images/banner2.jpg");
+        url_maps.put("Safe Motherhood", "http://www.hlfppt.org/images/banner3.jpg");
+        url_maps.put("First Five Years", "http://www.hlfppt.org/images/banner4.jpg");
+        url_maps.put("Healthy Future", "http://www.hlfppt.org/images/banner5.jpg");
+        sliderShow = (SliderLayout) findViewById(R.id.slider);
+        for(String name : url_maps.keySet()){
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(name)
+                    .image(url_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit);
+            sliderShow.addSlider(textSliderView);
+           Toast toast = Toast.makeText(getApplicationContext(), "loding"+name, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -89,50 +116,51 @@ public class homeScreen extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
        Fragment fragment = null; Class fragmentClass=Home.class;
-       // LayoutInflater inflater = getLayoutInflater();
-      //  LinearLayout container = (LinearLayout) findViewById(R.id.content_frame);
+        LayoutInflater inflater = getLayoutInflater();
+       LinearLayout container = (LinearLayout) findViewById(R.id.content_frame);
         if (id == R.id.nav_home) {
             Toast toast = Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_SHORT);
             toast.show();
-         fragmentClass=Home.class;
-       /*     container.removeAllViews();
-            inflater.inflate(R.layout.home, container);
-       */ } else if (id == R.id.nav_aboutus) {
+        // fragmentClass=Home.class;
+            container.removeAllViews();
+             createHome(inflater,container);
+             toast = Toast.makeText(getApplicationContext(), "loded", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (id == R.id.nav_aboutus) {
             Toast toast = Toast.makeText(getApplicationContext(), "aboutus", Toast.LENGTH_SHORT);
             toast.show();
-           fragmentClass=AboutUs.class;
-         //   container.removeAllViews();
+            fragmentClass=AboutUs.class;
+            container.removeAllViews();
          //   inflater.inflate(R.layout.about_us, container);
         } else if (id == R.id.nav_presence) {
             Toast toast = Toast.makeText(getApplicationContext(), "presence", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Presence.class;
-          //  container.removeAllViews();
+           container.removeAllViews();
           //  inflater.inflate(R.layout.presence, container);
         } else if (id == R.id.nav_work) {
             Toast toast = Toast.makeText(getApplicationContext(), "our work", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Work.class;
-           // container.removeAllViews();
+            container.removeAllViews();
            // inflater.inflate(R.layout.work, container);
         } else if (id == R.id.nav_services) {
             Toast toast = Toast.makeText(getApplicationContext(),"service", Toast.LENGTH_SHORT);
             toast.show();
-           //fragmentClass=Services.class;
-            //container.removeAllViews();
+            fragmentClass=Services.class;
+            container.removeAllViews();
             //inflater.inflate(R.layout.service, container);
         } else if (id == R.id.nav_photo) {
             Toast toast = Toast.makeText(getApplicationContext(), "photo", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=PhotoAndMedia.class;
-            //container.removeAllViews();
+            container.removeAllViews();
             //inflater.inflate(R.layout.photo, container);
         }else if (id == R.id.nav_share) {
             Intent sendIntent = new Intent();
@@ -143,11 +171,13 @@ public class homeScreen extends AppCompatActivity
             Toast toast = Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Home.class;
+            container.removeAllViews();
 
         } else if (id == R.id.nav_send) {
             Toast toast = Toast.makeText(getApplicationContext(), "send", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Home.class;
+            container.removeAllViews();
 
         }
         try {
@@ -163,7 +193,7 @@ public class homeScreen extends AppCompatActivity
         setTitle(item.getTitle());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+       return true;
     }
     public void openSite(View v)
     {
@@ -172,5 +202,10 @@ public class homeScreen extends AppCompatActivity
         i.setData(Uri.parse(url));
         startActivity(i);
 
+    }
+    @Override
+    protected void onStop() {
+        sliderShow.stopAutoCycle();
+        super.onStop();
     }
 }
