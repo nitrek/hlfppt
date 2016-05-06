@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class homeScreen extends AppCompatActivity
@@ -45,6 +47,15 @@ public class homeScreen extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Fragment fragment = null; Class fragmentClass=Home.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
     }
 
     @Override
@@ -84,32 +95,45 @@ public class homeScreen extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = null;
-        Class fragmentClass=Home.class;
+       Fragment fragment = null; Class fragmentClass=Home.class;
+       // LayoutInflater inflater = getLayoutInflater();
+      //  LinearLayout container = (LinearLayout) findViewById(R.id.content_frame);
         if (id == R.id.nav_home) {
             Toast toast = Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_SHORT);
             toast.show();
-            fragmentClass=Home.class;
-        } else if (id == R.id.nav_aboutus) {
+         fragmentClass=Home.class;
+       /*     container.removeAllViews();
+            inflater.inflate(R.layout.home, container);
+       */ } else if (id == R.id.nav_aboutus) {
             Toast toast = Toast.makeText(getApplicationContext(), "aboutus", Toast.LENGTH_SHORT);
             toast.show();
-            fragmentClass=AboutUs.class;
+           fragmentClass=AboutUs.class;
+         //   container.removeAllViews();
+         //   inflater.inflate(R.layout.about_us, container);
         } else if (id == R.id.nav_presence) {
             Toast toast = Toast.makeText(getApplicationContext(), "presence", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Presence.class;
+          //  container.removeAllViews();
+          //  inflater.inflate(R.layout.presence, container);
         } else if (id == R.id.nav_work) {
             Toast toast = Toast.makeText(getApplicationContext(), "our work", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Work.class;
+           // container.removeAllViews();
+           // inflater.inflate(R.layout.work, container);
         } else if (id == R.id.nav_services) {
             Toast toast = Toast.makeText(getApplicationContext(),"service", Toast.LENGTH_SHORT);
             toast.show();
-            fragmentClass=Services.class;
+           //fragmentClass=Services.class;
+            //container.removeAllViews();
+            //inflater.inflate(R.layout.service, container);
         } else if (id == R.id.nav_photo) {
             Toast toast = Toast.makeText(getApplicationContext(), "photo", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=PhotoAndMedia.class;
+            //container.removeAllViews();
+            //inflater.inflate(R.layout.photo, container);
         }else if (id == R.id.nav_share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -119,10 +143,12 @@ public class homeScreen extends AppCompatActivity
             Toast toast = Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Home.class;
+
         } else if (id == R.id.nav_send) {
             Toast toast = Toast.makeText(getApplicationContext(), "send", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=Home.class;
+
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance();
@@ -130,8 +156,10 @@ public class homeScreen extends AppCompatActivity
             e.printStackTrace();
         }
         // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
+         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+
         setTitle(item.getTitle());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
