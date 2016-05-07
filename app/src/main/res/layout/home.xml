@@ -1,12 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/image_slider_height"
+        android:weightSum="2"
+        >
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="190dp"
+            android:layout_weight="1"
+            custom:selected_color="#193B52"
+            custom:unselected_color="#019CD9"
+            custom:shape="oval"
+            custom:selected_padding_left="3dp"
+            custom:selected_padding_right="3dp"
+            custom:unselected_padding_left="3dp"
+            custom:unselected_padding_right="3dp"
+            custom:selected_width="8dp"
+            custom:selected_height="8dp"
+            custom:unselected_width="4dp"
+            custom:unselected_height="4dp"
+            />
+    </com.daimajia.slider.library.SliderLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/menu_horizontal_margin"
+        android:text="@string/belowSliderText1"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="20sp"
         />
-
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/belowSliderText2"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/menu_horizontal_margin"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="19sp"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/infoTabs1"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarThumbHorizontal="@mipmap/ic_launcher"
+        >
+    </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
