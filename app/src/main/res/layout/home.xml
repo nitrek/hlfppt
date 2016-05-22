@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="horizontal" 
+    android:background="@color/colorPrimaryDark"
+    >
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/slider"
         android:layout_width="match_parent"
@@ -55,13 +58,40 @@
         android:textAlignment="center"
         android:textSize="19sp"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+
+        >
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:id="@+id/left"
+        android:layout_alignRight="@+id/infoTabs1"
+        android:layout_marginTop="90dp"
+        android:background="@android:drawable/ic_media_ff"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/infoTabs1"
         android:layout_height="200dp"
-        android:layout_width="match_parent"
-        android:scrollbars="vertical"
+        android:layout_width="fill_parent"
         android:scrollbarStyle="insideOverlay"
-        android:scrollbarThumbHorizontal="@mipmap/ic_launcher"
+        android:isScrollContainer="true"
+        android:padding="@dimen/menu_horizontal_margin"
+
         >
     </android.support.v7.widget.RecyclerView>
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:id="@+id/right"
+        android:layout_alignLeft="@+id/infoTabs1"
+        android:layout_marginTop="90dp"
+        android:background="@android:drawable/ic_media_rew"
+
+        />
+    </RelativeLayout>
     </LinearLayout>

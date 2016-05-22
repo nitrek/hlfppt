@@ -91,12 +91,12 @@ public class homeScreen extends AppCompatActivity
         }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.infoTabs1);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         List<InformationHome> informationHome=InformationHome.initializeData();
         InformationHomeAdapter informationHomeAdapter = new InformationHomeAdapter(informationHome);
         recyclerView.setAdapter(informationHomeAdapter);
-        recyclerView.scrollBy(100,0100);
+        recyclerView.scrollBy(200,0);
     }
 
     @Override
