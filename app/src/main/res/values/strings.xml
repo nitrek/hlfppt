@@ -9,4 +9,6 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_our_presence">Map</string>
+    <string name="title_activity_work__details">Work_Details</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

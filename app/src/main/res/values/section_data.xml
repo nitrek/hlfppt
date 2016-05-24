@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_string">
+        <![CDATA[
+
+<!-- NOTE: i changed all single-percent symbols to double-percent symbols b/c they were causing problems -->
+<!-- SEE:  http://developer.android.com/guide/topics/resources/string-resource.html -->
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>your title</title>
+<style>
+<!-- style stuff in here ... -->
+</style>
+</head>
+
+<body>
+<p>Help text in here ...
+</body>
+</html>
+
+        ]]>
+    </string>
+
+</resources>

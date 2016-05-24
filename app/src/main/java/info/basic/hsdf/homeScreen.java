@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Indicators.PagerIndicator;
@@ -34,6 +35,8 @@ import java.util.List;
 public class homeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private SliderLayout sliderShow;
+    public final static String EXTRA_MESSAGE = "info.basic.hsdf.MESSAGE";
+    static int i =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +99,15 @@ public class homeScreen extends AppCompatActivity
         List<InformationHome> informationHome=InformationHome.initializeData();
         InformationHomeAdapter informationHomeAdapter = new InformationHomeAdapter(informationHome);
         recyclerView.setAdapter(informationHomeAdapter);
-        recyclerView.scrollBy(200,0);
+
+
+        RecyclerView recyclerView1 = (RecyclerView) findViewById(R.id.partners);
+        recyclerView1.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView1.setLayoutManager(layoutManager1);
+        List<InformationHomePartner> informationHomePartner=InformationHomePartner.initializeData();
+        InformationHomePartnersAdapter informationHomePartnerAdapter = new InformationHomePartnersAdapter(informationHomePartner);
+        recyclerView1.setAdapter(informationHomePartnerAdapter);
     }
 
     @Override
@@ -211,10 +222,34 @@ public class homeScreen extends AppCompatActivity
     }
     public void openSite(View v)
     {
-        String url = "http://www.hlfppt.org/";
+       /* String url = "http://www.hlfppt.org/";
         Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
+        i.setData(Uri.parse(url));*/
+        Intent intent = new Intent(this, Work_Details.class);
+
+        switch(i%5)
+        {
+            case 0:   intent.putExtra(EXTRA_MESSAGE,"0");break;
+            case 1:   intent.putExtra(EXTRA_MESSAGE,"1");break;
+            case 2:   intent.putExtra(EXTRA_MESSAGE,"2");break;
+            case 3:   intent.putExtra(EXTRA_MESSAGE,"3");break;
+            case 4:   intent.putExtra(EXTRA_MESSAGE,"4");break;
+        }
+        startActivity(intent);
+
+    }
+    public void slidePrevious(View v)
+    {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.infoTabs1);
+        i++;
+        recyclerView.smoothScrollToPosition(i%5);
+
+    }
+    public void slideNext(View v)
+    {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.infoTabs1);
+        i--;
+        recyclerView.smoothScrollToPosition(i%5);
 
     }
     @Override

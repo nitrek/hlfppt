@@ -23,7 +23,7 @@ public class InformationHome {
         informationHome.add(new InformationHome("Adolescent Health", "http://www.hlfppt.org/images/04.jpg",R.drawable.adolescent_health));
         informationHome.add(new InformationHome("Family Planning","http://www.hlfppt.org/images/family_planning.jpg",R.drawable.family_planning));
         informationHome.add(new InformationHome("HIV/AIDS","http://www.hlfppt.org/images/02.jpg",R.drawable.hiv_aids));
-        informationHome.add(new InformationHome("Wellness(Nutrition/DIC)","http://www.hlfppt.org/images/05.jpg",R.drawable.wellness));
+        informationHome.add(new InformationHome("InformationHome","http://www.hlfppt.org/images/05.jpg",R.drawable.wellness));
         return  informationHome;
     }
 }
