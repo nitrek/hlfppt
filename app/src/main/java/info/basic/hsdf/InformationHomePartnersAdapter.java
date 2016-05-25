@@ -1,12 +1,14 @@
 package info.basic.hsdf;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,10 +44,11 @@ public class InformationHomePartnersAdapter extends RecyclerView.Adapter<Informa
     }
 
     @Override
-    public void onBindViewHolder(InfoamationViewHolder infoamationViewHolder, int i) {
+    public void onBindViewHolder(InfoamationViewHolder infoamationViewHolder, final int i) {
         infoamationViewHolder.infoPhoto.setImageResource(informationHomeList.get(i).imageId);
-    }
 
+
+    }
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);

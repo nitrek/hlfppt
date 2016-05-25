@@ -19,11 +19,26 @@ public class InformationHomePartner {
     public static List<InformationHomePartner> initializeData(){
         List<InformationHomePartner> informationHome;
         informationHome = new ArrayList<>();
-        informationHome.add(new InformationHomePartner("pMaternal and Child health","http://www.hlfppt.org/images/03.jpg",R.drawable.maternal_child_health));
-        informationHome.add(new InformationHomePartner("pAdolescent Health", "http://www.hlfppt.org/images/04.jpg",R.drawable.adolescent_health));
-        informationHome.add(new InformationHomePartner("pFamily Planning","http://www.hlfppt.org/images/family_planning.jpg",R.drawable.family_planning));
-        informationHome.add(new InformationHomePartner("pHIV/AIDS","http://www.hlfppt.org/images/02.jpg",R.drawable.hiv_aids));
-        informationHome.add(new InformationHomePartner("pInformationHome","http://www.hlfppt.org/images/05.jpg",R.drawable.wellness));
+        informationHome.add(new InformationHomePartner("Government Of India","http://www.hlfppt.org/images/6.jpg",R.drawable.partner_6));
+        informationHome.add(new InformationHomePartner("National Rural Health Misssion", "http://mohfw.nic.in/NRHM.htm",R.drawable.partner_2));
+        informationHome.add(new InformationHomePartner("NACO","http://www.nacoonline.org/NACO/",R.drawable.partner_11));
+        informationHome.add(new InformationHomePartner("hlllifecare","http://www.lifecarehll.com/index_hlllifecare.html",R.drawable.partner_20));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
+        informationHome.add(new InformationHomePartner("Sifpsa","http://www.sifpsa.org/",R.drawable.partner_14));
         return  informationHome;
     }
 }

@@ -1,109 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="horizontal" 
     android:background="@color/colorPrimaryDark"
-    >
+    android:orientation="vertical"
+    android:scrollbars="horizontal">
+
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/image_slider_height"
-        android:weightSum="2"
-        >
+        android:weightSum="2">
+
         <com.daimajia.slider.library.Indicators.PagerIndicator
             android:id="@+id/custom_indicator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:paddingTop="190dp"
-            android:layout_weight="1"
             custom:selected_color="#193B52"
-            custom:unselected_color="#019CD9"
-            custom:shape="oval"
+            custom:selected_height="8dp"
             custom:selected_padding_left="3dp"
             custom:selected_padding_right="3dp"
+            custom:selected_width="8dp"
+            custom:shape="oval"
+            custom:unselected_color="#019CD9"
+            custom:unselected_height="4dp"
             custom:unselected_padding_left="3dp"
             custom:unselected_padding_right="3dp"
-            custom:selected_width="8dp"
-            custom:selected_height="8dp"
-            custom:unselected_width="4dp"
-            custom:unselected_height="4dp"
-            />
+            custom:unselected_width="4dp" />
     </com.daimajia.slider.library.SliderLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/menu_horizontal_margin"
-        android:text="@string/belowSliderText1"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#ffffff"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/belowSliderText2"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/menu_horizontal_margin"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textSize="19sp"
-        />
-    <RelativeLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-        >
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="200dp"
-        android:clickable="true"
-        android:id="@+id/left"
-        android:layout_alignRight="@+id/infoTabs1"
-        android:layout_marginTop="0dp"
-        android:background="@android:drawable/ic_media_ff"
-        android:onClick="slidePrevious"
-        />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/infoTabs1"
-        android:layout_height="200dp"
-        android:layout_width="fill_parent"
-        android:scrollbarStyle="insideOverlay"
-        android:isScrollContainer="false"
-        android:padding="@dimen/menu_horizontal_margin"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        >
-    </android.support.v7.widget.RecyclerView>
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="200dp"
-        android:clickable="true"
-        android:id="@+id/right"
-        android:layout_alignLeft="@+id/infoTabs1"
-        android:layout_marginTop="0dp"
-        android:background="@android:drawable/ic_media_rew"
-        android:onClick="slideNext"
-        />
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/partners"
-            android:layout_below="@+id/infoTabs1"
-            android:layout_height="100dp"
-            android:layout_marginTop="100dp"
-            android:layout_width="fill_parent"
-            android:scrollbarStyle="insideOverlay"
-            android:isScrollContainer="false"
-            android:padding="@dimen/menu_horizontal_margin"
-            />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/head1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/menu_horizontal_margin"
+                android:layout_marginLeft="60dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/belowSliderText1"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/head2"
+                android:layout_below="@+id/head1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="65dp"
+                android:layout_marginBottom="@dimen/menu_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:text="@string/belowSliderText2"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="19sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/head2"
+
+                >
+
+                <Button
+                    android:id="@+id/left"
+                    android:layout_width="30dp"
+                    android:layout_height="200dp"
+                    android:layout_alignRight="@+id/infoTabs1"
+                    android:layout_marginTop="0dp"
+                    android:background="@android:drawable/ic_media_ff"
+                    android:clickable="true"
+                    android:onClick="slidePrevious" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/infoTabs1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:isScrollContainer="false"
+                    android:padding="@dimen/menu_horizontal_margin"
+                    android:scrollbarStyle="insideOverlay"
+
+                    ></android.support.v7.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/right"
+                    android:layout_width="30dp"
+                    android:layout_height="200dp"
+                    android:layout_alignLeft="@+id/infoTabs1"
+                    android:layout_marginTop="0dp"
+                    android:background="@android:drawable/ic_media_rew"
+                    android:clickable="true"
+                    android:onClick="slideNext" />
+                <TextView
+                    android:id="@+id/partnersHead"
+                    android:layout_below="@+id/infoTabs1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/partnersHead"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/partners"
+                    android:layout_below="@+id/partnersHead"
+                    android:layout_width="fill_parent"
+                    android:layout_height="100dp"
+                    android:isScrollContainer="false"
+                    android:padding="@dimen/menu_horizontal_margin"
+                    android:scrollbarStyle="insideOverlay" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
