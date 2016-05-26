@@ -19,12 +19,18 @@
         android:layout_marginTop="16dp"
         android:layout_below="@+id/section_photo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:padding="@dimen/menu_horizontal_margin"
+        />
     <TextView
         android:id="@+id/section_content"
-        android:layout_marginTop="16dp"
         android:layout_below="@+id/section_heading"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:padding="@dimen/menu_horizontal_margin"
+        />
 
 </RelativeLayout>

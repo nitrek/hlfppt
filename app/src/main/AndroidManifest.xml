@@ -40,6 +40,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="info.basic.hsdf.homeScreen" />
         </activity>
+        <activity
+            android:name=".aboutUs"
+            android:label="@string/title_activity_about_us"
+            android:parentActivityName=".homeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="info.basic.hsdf.homeScreen" />
+        </activity>
     </application>
 
 </manifest>

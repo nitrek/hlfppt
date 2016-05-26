@@ -11,4 +11,5 @@
     <string name="title_activity_our_presence">Map</string>
     <string name="title_activity_work__details">Work_Details</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_about_us">aboutUs</string>
 </resources>

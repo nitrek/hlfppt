@@ -31,7 +31,7 @@ public class homeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private SliderLayout sliderShow;
     public final static String EXTRA_MESSAGE = "info.basic.hsdf.MESSAGE";
-    static int i =0;
+    static int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +103,8 @@ public class homeScreen extends AppCompatActivity
         List<InformationHomePartner> informationHomePartner=InformationHomePartner.initializeData();
         InformationHomePartnersAdapter informationHomePartnerAdapter = new InformationHomePartnersAdapter(informationHomePartner);
         recyclerView1.setAdapter(informationHomePartnerAdapter);
+        i=0;
+        recyclerView.smoothScrollToPosition(i);
     }
 
     @Override
@@ -152,11 +154,19 @@ public class homeScreen extends AppCompatActivity
              createHome(inflater,container);
              toast = Toast.makeText(getApplicationContext(), "loded", Toast.LENGTH_SHORT);
             toast.show();
+            setTitle(item.getTitle());
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         } else if (id == R.id.nav_aboutus) {
             Toast toast = Toast.makeText(getApplicationContext(), "aboutus", Toast.LENGTH_SHORT);
             toast.show();
             fragmentClass=AboutUs.class;
             container.removeAllViews();
+            Intent intent = new Intent(this, aboutUs.class);
+           startActivity(intent);
+
+            return  true;
          //   inflater.inflate(R.layout.about_us, container);
         } else if (id == R.id.nav_presence) {
             Toast toast = Toast.makeText(getApplicationContext(), "presence", Toast.LENGTH_SHORT);
@@ -190,13 +200,13 @@ public class homeScreen extends AppCompatActivity
             startActivity(sendIntent);
             Toast toast = Toast.makeText(getApplicationContext(), "share", Toast.LENGTH_SHORT);
             toast.show();
-            fragmentClass=Home.class;
+            fragmentClass=AboutUs.class;
             container.removeAllViews();
 
         } else if (id == R.id.nav_send) {
             Toast toast = Toast.makeText(getApplicationContext(), "send", Toast.LENGTH_SHORT);
             toast.show();
-            fragmentClass=Home.class;
+            fragmentClass=AboutUs.class;
             container.removeAllViews();
 
         }
@@ -241,6 +251,8 @@ public class homeScreen extends AppCompatActivity
     {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.infoTabs1);
         i--;
+        if(i<0)
+            i=5+i;
         recyclerView.smoothScrollToPosition(i%5);
 
     }
